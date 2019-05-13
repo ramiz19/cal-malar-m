@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+
+        <ui:composition>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="http://localhost:8080/Patients/faces/admin/index.xhtml">HASTANE BİLGİ SİSTEMİ</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <h:commandLink action="/admin/doktor/list?faces-redirect=true" value="DOKTOR"/>
+                            </li>
+                            <!-- 
+                            -->
+                            <li>
+                                <h:commandLink action="/admin/hasta/list?faces-redirect=true" value="HASTA"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/user_role/list?faces-redirect=true" value="ROLE"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/randevu/list?faces-redirect=true" value="RANDEVU"/>
+                            </li>
+                         
+
+                                
+
+                            <li>
+                                <h:commandLink action="/admin/user/list?faces-redirect=true" value="USER"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/klinik/list?faces-redirect=true" value="KLINIK"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/ilac/list?faces-redirect=true" value="ILAC"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/muayene/list?faces-redirect=true" value="MUAYENE"/>
+                            </li> 
+                            <li>
+                                <h:commandLink action="/admin/duyurular/list?faces-redirect=true" value="DUYURU"/>
+                            </li> 
+                            
+                              <li>
+                                <h:commandLink action="/admin/yetkilendirme/list?faces-redirect=true" value="YETKİLER"/>
+                            </li> 
+                            
+                            
+
+                        </ul>	
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><h:commandLink action="/admin/user/list?faces-redirect=true" value="#{login.user.user_name}" /></li>
+                            <li><h:commandLink action="#{login.doLogout()}" value="LOGOUT" /></li>
+                        </ul>
+
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body >
+
+        <ui:composition >
+
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid" style=" position: fixed;left: 0px ; right: 0px;" >
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="icon-bar"></span>
+                        </button>               
+                        <a  class="navbar-brand" href="#{frontend.main()}">HASTA BİLGİ SİSTEMİ</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+
+                            <li>
+                                <h:commandLink action="#{frontend.bolumler()}"  value="BÖLÜMLERİMİZ"/>
+
+                            </li>
+                            <li>
+                                <h:commandLink action="#{frontend.sorular()}"  value="SORULARINIZ"/>
+
+                            </li>
+                            <li>
+                                <h:commandLink action="#{frontend.hakkimizda()}"  value="HAKKIMIZDA"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="#{frontend.iletisim()}" value="İLETİŞİM"/>
+                            </li>
+
+                        </ul>	
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><h:commandLink rendered="#{login.varmi()}" value="#{login.user.user_name}" action="#{frontend.profile()}"/></li>
+                            <li><h:commandLink rendered="#{login.varmi()}"  value="LOGOUT" action="#{login.doLogout()}"/></li>
+                            <li><h:commandLink rendered="#{!login.varmi()}"  value="Giriş" action="#{frontend.Giris}"/></li>
+                        </ul>
+
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </ui:composition>
+    </body>
+</html>
+

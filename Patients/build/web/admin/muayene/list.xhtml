@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="container   padding-bottom-60">
+                    <h:commandLink rendered="#{sessions.hasPerm('muayene', 'C')}" action="#{muayene.createForm()}" value="NEW MUAYENE"></h:commandLink>
+                    <hr />
+                    <h:dataTable rendered="#{sessions.hasPerm('muayene','R')}" value="#{muayene.muayenelist}" var="m" styleClass="table table-stripped">
+                        <h:column>
+                            <f:facet name="header">MUAYENE_ID</f:facet>
+                            <h:commandLink action="#{muayene.updateForm(m)}" value=" #{m.muayene_id}">
+                            </h:commandLink>
+
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">TESHİS</f:facet>
+                                #{m.teshis}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">HASTA_NAME</f:facet>
+                                #{m.hasta_entity.hasta_name}
+                        </h:column>
+
+
+
+
+                        <h:column rendered="#{sessions.hasPerm2('muayene')}">
+                            <f:facet name="header">ADMINISTRATION</f:facet>
+                            <h:commandButton  rendered="#{sessions.hasPerm('muayene', 'U')}" action="#{muayene.updateForm(m)}" value="UPDATE" styleClass="btn btn-primary"></h:commandButton>
+                            <h:commandButton  rendered="#{sessions.hasPerm('muayene', 'Del')}" action="#{muayene.delete(m)}" value="DELETE" styleClass="btn btn-sm btn-danger"></h:commandButton>
+                            <h:commandButton rendered="#{sessions.hasPerm('muayene', 'D')}"  action="#{muayene.detailForm(m)}" value="DETAİL"></h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+
+                    <div class="btn btn-group">
+                        <h:commandButton rendered="#{muayene.hasPrev()}" action="#{muayene.previous}" value="previous"></h:commandButton>
+                        <h:commandButton rendered="#{muayene.hasNext()}" action="#{muayene.next}" value="next"></h:commandButton>
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

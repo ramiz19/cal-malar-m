@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Akgun Alarms</string>
+    <string name="alarm_kur">alarm on</string>
+    <string name="alarm_iptal">alarm off</string>
+
+    <string-array name="alarm_array" >
+        <item>BABA</item>
+        <item>dove</item>
+        <item>sapka</item>
+        <item>linking</item>
+        <item>rebirt</item>
+        <item>manus</item>
+        <item>skillet</item>
+        <item>taylor</item>
+    </string-array>
+
+
+</resources>

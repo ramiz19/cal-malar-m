@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Final Project</string>
+    <string name="alarm">ALARM</string>
+    <string name="connect">BAĞLAN</string>
+    <string name="countdown">GERİ SAYIM</string>
+    <string name="head">SAAT KONTROLÜ</string>
+    <string name="list">LISTELE</string>
+    <string name="onoff">AÇ KAPA</string>
+    <string name="timer">KRONOMETRE</string>
+</resources>

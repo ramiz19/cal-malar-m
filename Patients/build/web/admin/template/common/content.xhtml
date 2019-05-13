@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+        <ui:composition>
+
+            <h:form  rendered="#{sessions.hasPerm('doktor','R')}" >
+                <div class="col-md-3" >
+                    <div class="panel panel-default"  >
+                        <div class="panel-heading">DOKTOR</div>
+                        <div class="panel-body" >
+                            Kayitli Doktor Sayisi : #{doktor.sayi()} 
+                        </div>
+                    </div>
+                </div>
+
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('hasta','R')}" >
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">HASTA</div>
+                        <div class="panel-body">
+                            Kayitli Hasta Sayisi :   #{hasta.sayi()} 
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('role','R')}" >
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">ROLE</div>
+                        <div class="panel-body">
+                            Kayitli Role Sayisi :   #{rolebean.sayi()} 
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('klinik','R')}" >
+                <div class="col-md-3" >
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">KLINIK</div>
+                        <div class="panel-body">
+                            Kayitli Klinik Sayisi :  #{klinikbean.sayi()}  
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('randevu','R')}" >
+                <div class="col-md-3" >
+                    <div class="panel panel-default">
+                        <div class="panel-heading">RANDEVU</div>
+                        <div class="panel-body">
+                            Kayitli Randevu Sayisi :  #{randevuBean.sayi()}  
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('user','R')}" >
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">USER</div>
+                        <div class="panel-body">
+                            Kayitli Kullanıcı Sayisi :   #{userbean.sayi()} 
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('ilac','R')}" >
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">ILAC</div>
+                        <div class="panel-body">
+                            Kayitli Ilac Sayisi :   #{ilacbean.sayi()} 
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('muayene','R')}" >
+
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">MUAYENE </div>
+                        <div class="panel-body">
+                            Kayitli Muayene Sayisi :   #{muayene.sayi()} 
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <h:form rendered="#{sessions.hasPerm('duyuru','R')}" >
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">DUYURU</div>
+                        <div class="panel-body">
+                            Kayitli Duyuru Sayisi :   #{duyuru.sayi()} 
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:composition>
+    </body>
+</html>

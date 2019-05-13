@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.example.akgun.final_project.CountdownActivity">
+
+
+    <TextView
+        android:id="@+id/tvAra1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvCount1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:background="@android:color/white"
+        android:text=":"
+        android:textColor="@android:color/black"
+        android:textSize="22.5sp" />
+
+    <EditText
+        android:id="@+id/etHour"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="00"
+        android:textColor="@android:color/black"
+        android:textColorLink="@android:color/darker_gray"
+        android:layout_alignTop="@+id/tvAra1"
+        android:layout_toStartOf="@+id/tvAra1" />
+
+    <EditText
+        android:id="@+id/etMin"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="00"
+        android:textColor="@android:color/black"
+        android:textColorLink="@android:color/darker_gray"
+        android:layout_alignTop="@+id/tvAra1"
+        android:layout_toEndOf="@+id/tvAra1" />
+
+    <Button
+        android:id="@+id/bSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/etMin" />
+
+    <Button
+        android:id="@+id/bUnset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UNSET"
+        android:layout_above="@+id/bReset"
+        android:layout_toEndOf="@+id/bSet" />
+
+    <Button
+        android:id="@+id/bPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/bSet"
+        android:layout_below="@+id/bSet"
+        android:text="PAUSE" />
+
+    <Button
+        android:id="@+id/bReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        android:layout_alignBaseline="@+id/bPause"
+        android:layout_alignBottom="@+id/bPause"
+        android:layout_toEndOf="@+id/bPause" />
+
+    <TextView
+        android:id="@+id/tvCount1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set The CountDown Timer"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAra1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="OUR"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tvTime"
+        android:layout_marginBottom="70dp"
+        android:text="TextView" />
+
+</RelativeLayout>

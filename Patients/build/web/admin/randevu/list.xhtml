@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+               
+                <br/>
+                <br/>
+                <br/>
+                <div class="container   padding-bottom-60">
+                    <h:commandLink rendered="#{sessions.hasPerm('randevu', 'C')}" action="#{randevuBean.createForm()}" value="NEW RANDEVU"></h:commandLink>
+                    <hr />
+                    <h:dataTable rendered="#{sessions.hasPerm('randevu','R')}" value="#{randevuBean.randevuList}" var="ran" styleClass="table table-stripped">
+                        <h:column>
+                            <f:facet name="header">RANDEVU_ID</f:facet>
+                                #{ran.randevu_id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">SİKAYET</f:facet>
+                                #{ran.sikayet}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">TARİH</f:facet>
+                                #{ran.tarih}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">SAAT</f:facet>
+                                #{ran.saat}
+                        </h:column>
+                       
+                        <h:column>
+                            <f:facet name="header">HASTA</f:facet>
+                                #{ran.hasta_entity.hasta_name}
+                        </h:column>
+                         <h:column>
+                            <f:facet name="header">KLINIK</f:facet>
+                                #{ran.klinik_entity.klinik_name}
+                        </h:column>
+                       
+
+
+
+                        <h:column rendered="#{sessions.hasPerm2('randevu')}" >
+                            <f:facet name="header">ADMINISTRATION</f:facet>
+                            <h:commandButton rendered="#{sessions.hasPerm('randevu', 'U')}" action="#{randevuBean.updateForm(ran)}" value="UPDATE"></h:commandButton>
+                            <h:commandButton rendered="#{sessions.hasPerm('randevu', 'Del')}" styleClass="btn btn-sm btn-danger" action="#{randevuBean.delete(ran)}" value="DELETE"></h:commandButton>
+                            <h:commandButton rendered="#{sessions.hasPerm('randevu', 'D')}" action="#{randevuBean.detailForm(ran)}" value="DETAİL"></h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                    
+                    <div class="btn btn-group">
+                        <h:commandButton rendered="#{randevuBean.hasPrev()}" action="#{randevuBean.previous}" value="previous"></h:commandButton>
+                        <h:commandButton rendered="#{randevuBean.hasNext()}" action="#{randevuBean.next}" value="next"></h:commandButton>
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

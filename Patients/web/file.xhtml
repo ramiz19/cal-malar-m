@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <br/>
+        <h:form enctype="multipart/form-data">
+            <p>
+                <h:inputFile value="#{dosyalar.file}"/>
+           </p>
+            <h:commandButton action="#{dosyalar.upload()}" value="Upload"/>
+        </h:form>
+        
+        <hr/>
+        <ui:repeat value="#{dosyalar.fileList}" var="dos">
+            <h:panelGroup layout="block" rendered="#{dos.file_type.contains('image')}">
+                <h:graphicImage value="image/#{dos.file_name}"/>
+                
+            </h:panelGroup>
+            
+            <hr/>
+            <h:panelGroup layout="block" rendered="#{dos.file_type.contains('application')}">
+                <a href="file/#{dos.file_name}">#{dos.file_name}</a>
+                
+            </h:panelGroup>
+            
+        </ui:repeat>
+        
+    </h:body>
+</html>
+
