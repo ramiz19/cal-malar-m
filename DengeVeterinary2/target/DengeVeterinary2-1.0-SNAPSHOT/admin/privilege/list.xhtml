@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+                <div class="container">
+                    <h:commandLink  action="#{privilegeController.createForm()}" value="NEW PRIVILEGE"></h:commandLink>
+                    <hr />
+                    <h:form id="priv_table">
+                        <h:dataTable value="#{privilegeController.privilegeList}" var="prl" styleClass="table table-stripped">
+                            <h:commandLink value="#{y.c}" action="#{yetki.toggle(y,'C')}"/>
+
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{prl.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">MODULE</f:facet>
+                                    #{prl.module}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">CREATE</f:facet>
+                                <h:commandLink value="#{prl.c}" action="#{privilegeController.toggle(prl,'C')}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">READ</f:facet>
+                                <h:commandLink value="#{prl.r}" action="#{privilegeController.toggle(prl,'R')}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">UPDATE</f:facet>
+                                <h:commandLink value="#{prl.u}" action="#{privilegeController.toggle(prl,'U')}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">DELETE</f:facet>
+                                <h:commandLink value="#{prl.d}" action="#{privilegeController.toggle(prl,'D')}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">GROUP NAME</f:facet>
+                                    #{prl.groups.name}
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">ADMINISTRATION</f:facet>
+                                <h:commandButton   action="#{privilegeController.updateForm(prl)}" value="EDIT" styleClass="btn btn-primary"></h:commandButton>
+                                <h:commandButton   action="#{privilegeController.delete(prl)}" value="DELETE" styleClass="btn btn-danger">
+                                    <f:ajax execute="@this" render="priv_table"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

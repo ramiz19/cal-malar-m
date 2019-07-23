@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+
+                <div class="container">
+                    <p>
+                        <label for="parent">TC</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.tc}" /> 
+                    </p>
+                    <p>
+                        <label for="parent">isim</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.name}" />
+                    </p>
+                    <p>
+                        <label for="parent">soyisim</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.surname}" />
+                    </p>
+                    <p>
+                        <label for="parent">dogum tarihi</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.birthday}" >
+                            <f:convertDateTime pattern="dd-mm-yyyy" />
+                        </h:inputText> 
+                    </p>
+                    <p>
+                        <label for="parent">telefon</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.phoneNum}" />
+                    </p>
+                    <p>
+                        <label for="parent">email</label>
+                        <h:inputText id="email" rendered="true" requiredMessage="This mail fild is Required" validator="#{valid.validateEmail}" class="form-control" value="#{veterinaryController.veterinary.email}" />
+                        <h:message for="email" styleClass="text-danger" />                  
+                    </p>
+                    <p>
+                        <label for="parent">baclangic tarihi</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.startUpDate}" >
+                            <f:convertDateTime pattern="dd-mm-yyyy" />
+                        </h:inputText>
+                    </p>
+                    <p>
+                        <label for="parent">maas</label>
+                        <h:inputText class="form-control" value="#{veterinaryController.veterinary.salary}" />
+                    </p>
+
+                    <p>
+                        <h:commandButton value="UPDATE" action="#{veterinaryController.update()}" styleClass="btn btn-primary"/>
+                    </p>
+                    <p>
+                        <h:commandButton value="Back" action="#{veterinaryController.back()}" styleClass="btn btn-link" />
+                    </p>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

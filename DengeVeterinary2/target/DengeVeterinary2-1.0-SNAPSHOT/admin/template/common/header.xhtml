@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <body>
+
+        <ui:composition>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h:commandLink action="#{usersController.start()}" value="START PAGE"></h:commandLink>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <h:commandLink action="/admin/accounting/list?faces-redirect=true" value="ACCOUNTING"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/driver/list?faces-redirect=true" value="DRIVER"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/fieldman/list?faces-redirect=true" value="FIELDMAN"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/veterinary/list?faces-redirect=true" value="VETERINARY"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/secretary/list?faces-redirect=true" value="SECRETARY"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/veterinarian/list?faces-redirect=true" value="VETERINARIAN"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/vehicle/list?faces-redirect=true" value="VEHICLE"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/stock/list?faces-redirect=true" value="STOCK"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/expense/list?faces-redirect=true" value="EXPENSE"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/record/list?faces-redirect=true" value="RECORD"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/institution/list?faces-redirect=true" value="INSTITUTION"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/revenue/list?faces-redirect=true" value="REVENUE"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/vehicleMaintenance/list?faces-redirect=true" value="V.MAINTENANCE"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/dailylog/list?faces-redirect=true" value="DAILYLOG"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/groups/list?faces-redirect=true" value="GROUPS"/>
+                            </li>
+
+                            <li>
+                                <h:commandLink action="/admin/users/list?faces-redirect=true" value="USERS"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/activities/list?faces-redirect=true" value="ACTIVITIES"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/file/file?faces-redirect=true" value="FILE"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/privilege/list?faces-redirect=true" value="Privilege"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/groups/list?faces-redirect=true" value="GROUPS"/>
+                            </li>
+                            <li>
+                                <h:commandLink action="/admin/users/list?faces-redirect=true" value="USERS"/>
+                            </li>
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h:commandLink action="#{loginController.logout()}" value="LOGOUT"/>
+                            </li> 
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </ui:composition>
+    </body>
+</html>

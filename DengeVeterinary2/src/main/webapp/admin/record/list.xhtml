@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+                <div class="container">
+                    <h:commandLink action="#{recordController.createForm()}" value="NEW RECORD"></h:commandLink>
+                    <hr />
+                    <h:form id="rec_table">
+                        <h:dataTable value="#{recordController.recordList}" var="rec" styleClass="table table-stripped">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{rec.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">KURUM</f:facet>
+                                    #{rec.institution.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Rendavu Tarihi</f:facet>
+                                    #{rec.appointmentDate}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Not</f:facet>
+                                    #{rec.note}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Sekreter</f:facet>
+                                    #{rec.secretary.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">ADMINISTRATION</f:facet>
+                                <h:commandButton action="#{recordController.updateForm(rec)}" value="EDIT" styleClass="btn btn-primary"></h:commandButton>
+                                <h:commandButton action="#{recordController.delete(rec)}" value="DELETE" styleClass="btn btn-danger">
+                                    <f:ajax execute="@this" render="rec_table"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                    #{oblast.page}
+                    <div class="btn btn-group">
+                        <h:commandButton rendered="#{oblast.hasPrev()}" action="#{oblast.previous()}" value="privious" styleClass="btn btn-danger"></h:commandButton>
+                        <h:commandButton rendered="#{oblast.hasNext()}" action="#{oblast.next()}" value="next" styleClass="btn btn-primary"></h:commandButton>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

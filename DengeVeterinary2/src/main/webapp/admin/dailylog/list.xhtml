@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+                <div class="container">
+                    <h:commandLink action="#{dailyLogController.createForm()}" value="NEW DAILYLOG"></h:commandLink>
+                    <hr />
+                    <h:form id="daily_table">
+                    <h:dataTable value="#{dailyLogController.dailyLogList}" var="dail" styleClass="table table-stripped">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                                #{dail.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Veteriner</f:facet>
+                                #{dail.veterinary.name} #{dail.veterinary.surname}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Veteriner Yardımcısı</f:facet>
+                            <ul>
+                                <ui:repeat value = "#{dail.veterinarians}" var="vians">
+                                    <li>#{vians.name} #{vians.surname}</li>
+
+                                </ui:repeat>
+                            </ul> 
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Şöför</f:facet>
+                                #{dail.driver.name} #{dail.driver.surname}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Saha Elemanı</f:facet>
+                            <ul>
+                                <ui:repeat value = "#{dail.fieldmans}" var="field">
+                                    <li>#{field.name} #{field.surname}</li>
+
+                                </ui:repeat>
+                            </ul> 
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Araç</f:facet>
+                                #{dail.vehicle.plaque}   
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Bölge</f:facet>
+                                #{dail.place}   
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Tarih</f:facet>
+                                #{dail.dateWorked}   
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">ADMINISTRATION</f:facet>
+                            <h:commandButton action="#{dailyLogController.updateForm(dail)}" value="EDIT" styleClass="btn btn-primary"></h:commandButton>
+                            <h:commandButton action="#{dailyLogController.delete(dail)}" value="DELETE" styleClass="btn btn-danger">
+                                <f:ajax execute="@this" render="daily_table"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                        </h:form>
+                    #{oblast.page}
+                    <div class="btn btn-group">
+                        <h:commandButton rendered="#{oblast.hasPrev()}" action="#{oblast.previous()}" value="privious" styleClass="btn btn-danger"></h:commandButton>
+                        <h:commandButton rendered="#{oblast.hasNext()}" action="#{oblast.next()}" value="next" styleClass="btn btn-primary"></h:commandButton>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

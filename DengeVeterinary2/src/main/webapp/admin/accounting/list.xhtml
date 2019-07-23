@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/admin/template/layout.xhtml">
+            <ui:define name="content">
+                <div class="container">
+                    <h:commandLink   action="#{accountingController.createForm()}" value="NEW ACCOUNTING"></h:commandLink>
+                    <hr />
+                    <h:form id="accounting_table">
+                        <h:dataTable value="#{accountingController.accountingList}" var="accoun" styleClass="table table-stripped">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{accoun.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">TC</f:facet>
+                                    #{accoun.tc}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NAME</f:facet>
+                                    #{accoun.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">SURNAME</f:facet>
+                                    #{accoun.surname}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">telefon</f:facet>
+                                    #{accoun.phoneNum}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">email</f:facet>
+                                    #{accoun.email}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">dogum</f:facet>
+                                    #{accoun.birthday}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">baslangic tarihi</f:facet>
+                                    #{accoun.startUpDate}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">MAAS</f:facet>
+                                    #{accoun.salary}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">ADMINISTRATION</f:facet>
+                                <h:commandButton  action="#{accountingController.updateForm(accoun)}" value="EDIT" styleClass="btn btn-primary"></h:commandButton>
+                                <h:commandButton  action="#{accountingController.delete(accoun)}" value="DELETE" styleClass="btn btn-danger">
+                                    <f:ajax execute="@this" render="accounting-table"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                    #{accountingController.page}
+                    <div class="btn btn-group">
+                        <h:commandButton rendered="#{accountingController.hasPrev()}" action="#{accountingController.previous()}" value="privious" styleClass="btn btn-danger"></h:commandButton>
+                        <h:commandButton rendered="#{accountingController.hasNext()}" action="#{accountingController.next()}" value="next" styleClass="btn btn-primary"></h:commandButton>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
